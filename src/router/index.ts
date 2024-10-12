@@ -8,7 +8,7 @@ const routes = [
     name: 'Main',
     component: Main,
     meta: {
-      requiresAuth: true, 
+      requiresAuth: true,
     },
   },
   {
@@ -23,18 +23,18 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   const accessToken = localStorage.getItem('access_token');
+router.beforeEach((to, from, next) => {
+  const accessToken = localStorage.getItem('access_token');
 
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     if (!accessToken) {
-//       next({ name: 'Login' });  
-//     } else {
-//       next(); 
-//     }
-//   } else {
-//     next();  
-//   }
-// });
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!accessToken) {
+      next({ name: 'Login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 export default router;

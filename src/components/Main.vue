@@ -3,7 +3,9 @@
     <h1>Создать сущность</h1>
     <div class="flex">
       <Select :options="options" v-model="selectedItem"></Select>
-      <Button :disabled="isCreateButtonDisabled || isLoading" @click="createItem">Создать</Button>
+      <Button :disabled="isCreateButtonDisabled" :isLoading="store.isLoading" @click="createItem"
+        >Создать</Button
+      >
     </div>
     <IdTable :items="Items" />
   </div>
@@ -23,7 +25,6 @@ watch(selectedItem, (newItem) => {
   store.setSelectedItem(newItem)
 })
 
-const isLoading = store.isLoading
 const Items = store.Items
 const isCreateButtonDisabled = computed(() => !store.selectedItem)
 const createItem = store.postItem

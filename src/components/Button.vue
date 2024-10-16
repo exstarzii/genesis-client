@@ -92,10 +92,6 @@ const handleClick = () => {
   }
 }
 
-.base-button.is-loading {
-  cursor: progress;
-}
-
 .base-button.is-loading span:not(.loader) {
   visibility: hidden;
 }

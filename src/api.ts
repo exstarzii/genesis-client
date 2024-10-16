@@ -2,27 +2,18 @@ import axios from "axios"
 import type { OAuthResponse } from "./types/OAuthResponse";
 import type { AmoCRMResponse } from "./types/AmoCRMResponse";
 
-const base_api = axios.create({
-    baseURL: 'https://app2.gnzs.ru',
-    timeout: 5000,
-});
-
 const api = axios.create({
-    baseURL: 'https://amocrmgnzstesttask.amocrm.ru',
+    baseURL: import.meta.env.VITE_API_URL,
     timeout: 5000,
 });
 
 export const Auth = async () => {
-    const response = await base_api.get('/amocrm/test/oauth/get-token.php', {
-        headers: {
-            'X-Client-Id': '31992158'
-        }
-    });
+    const response = await api.get('/auth');
     return response.data as OAuthResponse;
 };
 
-export const CreateDeal = async () => {
-    const response = await api.get('/api/v4/leads', {
+export const CreateLead = async () => {
+    const response = await api.post('/lead', {}, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token')
         }
@@ -31,7 +22,7 @@ export const CreateDeal = async () => {
 };
 
 export const CreateContact = async () => {
-    const response = await api.get('/api/v4/contacts', {
+    const response = await api.post('/contact', {}, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token')
         }
@@ -40,7 +31,7 @@ export const CreateContact = async () => {
 };
 
 export const CreateCompany = async () => {
-    const response = await api.get('/api/v4/companies', {
+    const response = await api.post('/company', {}, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token')
         }

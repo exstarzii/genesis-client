@@ -11,7 +11,7 @@ export const useMainStore = defineStore('mainStore', () => {
   function postItem() {
     isLoading.value = true;
     if (selectedItem.value == 'deal') {
-      api.CreateDeal()
+      api.CreateLead()
         .then(lead => Items.value.push({ name: 'Сделка', id: String(lead.id) }))
         .then(() => isLoading.value = false)
     } else if (selectedItem.value == 'contact') {

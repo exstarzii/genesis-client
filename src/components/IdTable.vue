@@ -4,6 +4,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>Name</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,7 @@ const props = defineProps<{
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20px;
 }
 
 th,

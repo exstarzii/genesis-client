@@ -4,8 +4,8 @@
     <div class="flex">
       <Select :options="options" v-model="selectedItem"></Select>
       <Button :disabled="isCreateButtonDisabled || isLoading" @click="createItem">Создать</Button>
-      <IdTable :items="Items" />
     </div>
+    <IdTable :items="Items" />
   </div>
 </template>
 

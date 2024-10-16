@@ -10,6 +10,7 @@
 import { ref } from 'vue'
 import Button from './Button.vue'
 import { useMainStore } from '@/stores/mainStore'
+import router from '@/router'
 
 const error = ref<string | null>(null)
 const store = useMainStore()
@@ -17,6 +18,7 @@ const store = useMainStore()
 const login = async () => {
   error.value = null
   await store.Auth()
+  router.push('/')
 }
 </script>
 

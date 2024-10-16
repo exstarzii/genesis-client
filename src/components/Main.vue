@@ -4,6 +4,7 @@
     <div class="flex">
       <Select :options="options" v-model="selectedItem"></Select>
       <Button :disabled="isCreateButtonDisabled || isLoading" @click="createItem">Создать</Button>
+      <IdTable :items="Items" />
     </div>
   </div>
 </template>
@@ -11,6 +12,7 @@
 <script lang="ts" setup>
 import Button from './Button.vue'
 import Select from './Select.vue'
+import IdTable from './IdTable.vue'
 import { computed, ref, watch } from 'vue'
 import { useMainStore } from '../stores/mainStore'
 
@@ -22,6 +24,7 @@ watch(selectedItem, (newItem) => {
 })
 
 const isLoading = store.isLoading
+const Items = store.Items
 const isCreateButtonDisabled = computed(() => !store.selectedItem)
 const createItem = store.postItem
 
